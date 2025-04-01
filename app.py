@@ -11,9 +11,7 @@ uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "png", "jpeg"])
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
     st.image(image, caption="Uploaded Image", use_column_width=True)
-
     person_image, human_mask = detect_human(uploaded_file)
-
     if person_image:
         st.image(person_image, caption="Detected Person", use_column_width=True)
         st.image(human_mask, caption="Generated Mask", use_column_width=True)
